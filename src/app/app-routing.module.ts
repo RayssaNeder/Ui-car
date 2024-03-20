@@ -1,3 +1,4 @@
+import { AuthGuard } from './pages/guards/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate:[AuthGuard]
   },
   {
     path: 'usuarios',
@@ -26,6 +28,8 @@ const routes: Routes = [
   {
     path: 'carros',
     loadChildren: () => import('./pages/carro/carro.module').then(m => m.CarroModule),
+    canActivate:[AuthGuard]
+
   }
 ];
 
