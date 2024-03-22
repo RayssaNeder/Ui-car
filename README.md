@@ -22,3 +22,10 @@ Inclusao do layout das páginas com a inclusão de um navbar e um menu lateral p
 [009] Frontend - login
 Inclusao do serviço de login para obtenção do token JWT do backend para autorização de acesso
 
+[014] - FrontEnd - Criação de Interceptor de requisições/Guard de rotas
+Criação de um interceptor de requisições de guarda de rotas para verificar se o usuario está logado e para redirecionamento para tela de login em caso negativo
+
+
+[010] Frontend - crud Carros
+Inclui CRUD para carros
+

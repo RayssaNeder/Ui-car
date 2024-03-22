@@ -26,9 +26,11 @@ const RxJS = [LoaderInterceptor, HTTPStatus];
     AppRoutingModule,
 
     CommonModule,
+    HttpClientModule,
+    
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+
 
     NgxSpinnerModule
   ],

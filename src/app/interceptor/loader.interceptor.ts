@@ -43,13 +43,13 @@ export class LoaderInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         ++this._requests;
         let headers;
-        if (req.url.includes('api.ipify.org')) {
+        if (req.url.includes('/api/users')) {
             headers: new HttpHeaders({
                 contentType: "false",
                 processData: "false",
             });
-        }
-        else if (req.body instanceof FormData) {
+
+      } else if (req.body instanceof FormData) {
 
             headers: new HttpHeaders({
                 contentType: "false",
