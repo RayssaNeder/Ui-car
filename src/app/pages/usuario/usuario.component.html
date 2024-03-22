@@ -1,0 +1,176 @@
+<navbar></navbar>
+  <sidebar></sidebar>
+
+
+
+<div *ngIf="tipoTela == 2" class="container-base">
+
+    <div class="content-page" >
+        <div class="card-header">
+            <div class="card-title"> Cadastro de Usuário </div>
+            <div (click)="ListarUsuario()" class="card-menu"> Listagem de Usuários </div>
+
+        </div>
+
+        <form class="form-page" [formGroup]="usuarioForm" (submit)="enviar()">
+
+            <div class="row">
+                <div class="group-row">
+                    <label>Primeiro Nome</label>
+                    <input type="text" name="firstName" id="firstName" placeholder="Nome" formControlName="firstName" required />
+                    <label class="error-input" *ngIf="usuarioForm.get('firstName')?.errors?.['required'] &&
+                    usuarioForm.get('firstName')?.touched">
+                        Campo Obrigatório!
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="group-row">
+                <label>Segundo Nome</label>
+                <input type="text" name="lastName" id="lastName" placeholder="Sobrenome" formControlName="lastName" required />
+                <label class="error-input" *ngIf="usuarioForm.get('lastName')?.errors?.['required'] &&
+                usuarioForm.get('lastName')?.touched">
+                    Campo Obrigatório!
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="group-row">
+                <label>Email</label>
+                <input type="text" name="email" id="email" placeholder="Email" formControlName="email" required />
+                <label class="error-input" *ngIf="usuarioForm.get('email')?.errors?.['required'] &&
+                usuarioForm.get('email')?.touched">
+                    Campo Obrigatório!
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="group-row">
+                <label>Email</label>
+                <input type="date" name="birthday" id="birthday" placeholder="Nascimento" formControlName="birthday" required />
+                <label class="error-input" *ngIf="usuarioForm.get('birthday')?.errors?.['required'] &&
+                usuarioForm.get('birthday')?.touched">
+                    Campo Obrigatório!
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="group-row">
+                <label>Telefone</label>
+                <input type="text" name="phone" id="phone" placeholder="Telefone" formControlName="phone" required />
+                <label class="error-input" *ngIf="usuarioForm.get('phone')?.errors?.['required'] &&
+                usuarioForm.get('phone')?.touched">
+                    Campo Obrigatório!
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="group-row">
+                <label>Login</label>
+                <input type="text" name="login" id="login" placeholder="Login" formControlName="login" required />
+                <label class="error-input" *ngIf="usuarioForm.get('login')?.errors?.['required'] &&
+                usuarioForm.get('login')?.touched">
+                    Campo Obrigatório!
+                </label>
+              </div>
+
+              <div style="margin: 20px;"></div>
+
+              <div class="group-row">
+                <label>Password</label>
+                <input type="text" name="password" id="password" placeholder="Senha" formControlName="password" required />
+                <label class="error-input" *ngIf="usuarioForm.get('password')?.errors?.['required'] &&
+                usuarioForm.get('password')?.touched">
+                    Campo Obrigatório!
+                </label>
+              </div>
+            </div>
+
+
+
+          <div class="row">
+              <div class="group-row">
+                  <input type="submit" value="Salvar" class="btn-primary" />
+              </div>
+          </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<div *ngIf="tipoTela == 1" class="container-base">
+
+    <div class="content-page">
+
+        <div class="header-info-2">
+            <div class="card-header">
+                <div class="card-title"> Listagem de Usuários </div>
+                <div (click)="cadastro()" class="card-menu"> Cadastro de Usuário </div>
+            </div>
+
+
+            <table cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <!-- <td></td> -->
+                        <td>Id</td>
+                        <td>Nome</td>
+                        <td>Sobrenome</td>
+                        <td>Email</td>
+                        <td>Nascimento</td>
+                        <td>Telefone</td>
+                        <td>Login</td>
+                        <td>Ação</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="select-item" *ngFor="let item of tableListUsuarios | paginate: config; let i = index"
+                        class="linha-table" [ngClass]="{'linha-cinza' : i % 2 == 0, 'linha-branca' : i % 2 !== 0}">
+
+                        <td>{{item.id}}</td>
+                        <td>{{item.firstName}}</td>
+                        <td>{{item.lastName}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.birthday}}</td>
+                        <td>{{item.phone}}</td>
+                        <td>{{item.login}}</td>
+
+                        <td>
+                          <i class="material-icons edit-icon" (click)="edicao(item.id)">edit</i>
+                          <i class="material-icons delete-icon" (click)="remocao(item.id)">delete</i>
+                      </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tabela-footer" *ngIf="paginacao && tableListUsuarios">
+                <label class="mostrar">Mostrar</label>
+                <ng-select (change)="mudarItemsPorPage()" [(ngModel)]="itemsPorPagina" [clearable]="false"
+                    [searchable]="false" class="mostrar-drop">
+                    <ng-option [value]="10">10</ng-option>
+                    <ng-option [value]="50">50</ng-option>
+                    <ng-option [value]="100">100</ng-option>
+                </ng-select>
+
+                <div class="container-pagination">
+                    <pagination-controls id="{{this.id}}" previousLabel="Anterior" nextLabel="Próximo"
+                        [responsive]="true" (pageChange)="mudarPage($event)">
+                    </pagination-controls>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

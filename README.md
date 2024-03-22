@@ -29,3 +29,6 @@ Criação de um interceptor de requisições de guarda de rotas para verificar s
 [010] Frontend - crud Carros
 Inclui CRUD para carros
 
+[011] Frontend - crud Usuarios
+Inclui CRUD para usuarios
+
