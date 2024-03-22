@@ -1,15 +1,15 @@
-//Install express server
-const express = require('express');
-const path = require('path');
+//Importa as dependências que acabamos de instalar
+const express = require("express");
+const path = require("path");
 
 const app = express();
 
-// Serve only the static files form the dist directory
-app.use(express.static('./dist/ui-car'));
+// Serve os arquivos estáticos da pasta dist (gerada pelo ng build)
+app.use(express.static(__dirname + "/dist/ui-car"));
 
-app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/ui-car/'}),
-);
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname + "/dist/ui-car/index.html"));
+});
 
-// Start the app by listening on the default Heroku port
+// Inicia a aplicação pela porta configurada
 app.listen(process.env.PORT || 8080);
