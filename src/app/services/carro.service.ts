@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environment';
+import { environment } from 'src/environment.prod';
 import { Carro } from '../models/Carro';
 
 
@@ -16,7 +16,7 @@ export class CarroService {
     {
     }
 
-    private readonly baseURL = environment["endPoint"];
+    private readonly baseURL = environment["apiUrl"];
 
     AdicionarCarro(carro:Carro)
     {

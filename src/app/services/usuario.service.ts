@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environment';
+import { environment } from 'src/environment.prod';
 import { Usuario } from '../models/Usuario';
 
 
@@ -15,7 +15,7 @@ export class UsuarioService {
     {
     }
 
-    private readonly baseURL = environment["endPoint"];
+    private readonly baseURL = environment["apiUrl"];
 
     AdicionarUsuario(usuario:Usuario)
     {
