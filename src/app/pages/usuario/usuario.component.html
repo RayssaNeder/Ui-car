@@ -13,7 +13,7 @@
         </div>
 
         <form class="form-page" [formGroup]="usuarioForm" (submit)="enviar()">
-
+          <div class="form-container">
             <div class="row">
                 <div class="group-row">
                     <label>Primeiro Nome</label>
@@ -68,29 +68,73 @@
                 </label>
               </div>
             </div>
-
-            <div class="row">
-              <div class="group-row">
-                <label>Login</label>
-                <input type="text" name="login" id="login" placeholder="Login" formControlName="login" required />
-                <label class="error-input" *ngIf="usuarioForm.get('login')?.errors?.['required'] &&
-                usuarioForm.get('login')?.touched">
-                    Campo Obrigatório!
-                </label>
-              </div>
-
-              <div style="margin: 20px;"></div>
-
-              <div class="group-row">
-                <label>Password</label>
-                <input type="text" name="password" id="password" placeholder="Senha" formControlName="password" required />
-                <label class="error-input" *ngIf="usuarioForm.get('password')?.errors?.['required'] &&
-                usuarioForm.get('password')?.touched">
-                    Campo Obrigatório!
-                </label>
-              </div>
             </div>
 
+            <div class="form-container">
+              <div class="row">
+                <div class="group-row">
+                  <label>Login</label>
+                  <input type="text" name="login" id="login" placeholder="Login" formControlName="login" required />
+                  <label class="error-input" *ngIf="usuarioForm.get('login')?.errors?.['required'] &&
+                  usuarioForm.get('login')?.touched">
+                      Campo Obrigatório!
+                  </label>
+                </div>
+
+                <div style="margin: 20px;"></div>
+
+                <div class="group-row">
+                  <label>Password</label>
+                  <input type="text" name="password" id="password" placeholder="Senha" formControlName="password" required />
+                  <label class="error-input" *ngIf="usuarioForm.get('password')?.errors?.['required'] &&
+                  usuarioForm.get('password')?.touched">
+                      Campo Obrigatório!
+                  </label>
+                </div>
+            </div>
+          </div>
+
+            <!-- Campos para os carros -->
+          <div class="form-container">
+
+              <div formArrayName="cars">
+                <div *ngFor="let carroControl of cars.controls; let i=index" [formGroupName]="i">
+                  <div class="row">
+                      <div class="group-row">
+                        <input type="text" formControlName="year" placeholder="Ano" required>
+                      </div>
+                      <div style="margin: 20px;"></div>
+                      <div class="group-row">
+                        <input type="text" formControlName="licensePlate" placeholder="Placa" required>
+                      </div>
+                </div>
+
+                <div class="row">
+                    <div class="group-row">
+                      <input type="text" formControlName="model" placeholder="Modelo" required>
+                    </div>
+                    <div style="margin: 20px;"></div>
+                    <div class="group-row">
+                      <input type="text" formControlName="color" placeholder="Cor" required>
+                    </div>
+                </div>
+
+                <div class="group-row">
+                  <button type="button" (click)="removerCarro(i)" title="Remover Carro" class="btn-danger">
+                    <i class="material-icons">delete</i>
+                  </button>
+                </div>
+                </div>
+              </div>
+          <div class="row">
+            <div class="group-row">
+                <button type="button" (click)="adicionarCarro()" title="Adicionar Carro" class="btn-info">
+                  <i class="material-icons">add</i>
+                </button>
+
+            </div>
+        </div>
+        </div>
 
 
           <div class="row">

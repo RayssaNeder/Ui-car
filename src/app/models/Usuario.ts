@@ -7,7 +7,7 @@ export class Usuario
     email: string;
     phone: string;
     login: number;
-    password: Date;
+    password: string;
     birthday: Date;
     cars: Carro[];
 }

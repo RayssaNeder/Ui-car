@@ -1,6 +1,6 @@
 import { Usuario } from './../../models/Usuario';
 import { UsuarioService } from './../../services/usuario.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Component } from '@angular/core';
 import { MenuService } from 'src/app/services/menu.service';
 
@@ -19,6 +19,10 @@ export class UsuarioComponent {
   config: any;
   paginacao: boolean = true;
   itemsPorPagina: number = 10
+
+  get cars() {
+    return this.usuarioForm.get('cars') as FormArray;
+  }
 
   configpag() {
     this.id = this.gerarIdParaConfigDePaginacao();
@@ -95,6 +99,7 @@ export class UsuarioComponent {
           login: ['', [Validators.required]],
           password: ['', [Validators.required]],
           birthday: ['', [Validators.required]],
+          cars: this.formBuilder.array([])
 
         }
       )
@@ -142,7 +147,10 @@ export class UsuarioComponent {
       item.birthday = dados["birthday"].value;
       item.phone = dados["phone"].value;
 
+      const carsData = dados["cars"].value;
+
       item.id = 0;
+      item.cars = carsData;
 
     this.usuarioService.AdicionarUsuario(item)
     .subscribe((response: Usuario) => {
@@ -202,6 +210,32 @@ export class UsuarioComponent {
         () => { })
 
   }
+
+
+  adicionarCarro() {
+  const carsFormArray = this.usuarioForm.get('cars') as FormArray;
+
+  // Crie um novo FormGroup para representar um carro
+  const novoCarro = this.formBuilder.group({
+    year: ['', Validators.required],
+    licensePlate: ['', Validators.required],
+    model: ['', Validators.required],
+    color: ['', Validators.required]
+  });
+
+  // Adicione o novo FormGroup à FormArray de carros
+  carsFormArray.push(novoCarro);
+}
+
+
+
+removerCarro(index: number) {
+  // Obtenha o FormArray de carros
+  const carsFormArray = this.usuarioForm.get('cars') as FormArray;
+
+  // Remova o carro pelo índice especificado
+  carsFormArray.removeAt(index);
+}
 
 
 
