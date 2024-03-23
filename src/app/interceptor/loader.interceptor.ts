@@ -43,7 +43,7 @@ export class LoaderInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         ++this._requests;
         let headers;
-        if (req.url.includes('/api/users')) {
+        if (req.url.includes('/api/users') || (req.url.includes('/authenticate'))) {
             headers: new HttpHeaders({
                 contentType: "false",
                 processData: "false",
