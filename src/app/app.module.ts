@@ -11,6 +11,7 @@ import {FormsModule,  ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 const RxJS = [LoaderInterceptor, HTTPStatus];
@@ -37,7 +38,8 @@ const RxJS = [LoaderInterceptor, HTTPStatus];
   providers: [
     AuthGuard,
     RxJS,
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },],
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    provideAnimationsAsync(),],
   bootstrap: [AppComponent],
   exports:
   [

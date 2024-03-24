@@ -2,11 +2,33 @@
   background: #fefefe;
   border: 1px solid #fefefe;
   box-sizing: border-box;
-
   box-shadow: 0px 0.5px 2px rgb(53 51 52 / 16%);
   height: 72px;
-  display:flex;
-   position: fixed;
-  width: -webkit-fill-available;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-between;
+  align-items: center;
   z-index: 9999;
+}
+
+.logo {
+  margin-left: 20px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #5AB050;
+  margin-top: 15px;
+}
+
+.user-icon {
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.user-icon i {
+  font-size: 28px;
+  color: #5AB050;
+  cursor: pointer;
 }

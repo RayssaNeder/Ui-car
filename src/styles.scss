@@ -6,6 +6,8 @@
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
 
 body {
   font-family: "Poppins";
@@ -79,6 +81,14 @@ label {
   cursor: pointer;
 
   width: auto;
+}
+
+.edit-icon {
+  color: #5AB050;
+}
+
+.delete-icon {
+  color: #5AB050; 
 }
 
 .container-base {
@@ -285,3 +295,6 @@ table {
   cursor: default !important;
   border-radius: 5px !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

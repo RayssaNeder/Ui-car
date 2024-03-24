@@ -96,16 +96,16 @@
 
             <!-- Campos para os carros -->
           <div class="form-container">
-
+              <label>Adicionar carro ao Usuário:</label>
               <div formArrayName="cars">
                 <div *ngFor="let carroControl of cars.controls; let i=index" [formGroupName]="i">
                   <div class="row">
                       <div class="group-row">
-                        <input type="text" formControlName="year" placeholder="Ano" required>
+                        <input type="text" formControlName="licensePlate" placeholder="Placa" required>
                       </div>
                       <div style="margin: 20px;"></div>
                       <div class="group-row">
-                        <input type="text" formControlName="licensePlate" placeholder="Placa" required>
+                        <input type="text" formControlName="year" placeholder="Ano" required>
                       </div>
                 </div>
 

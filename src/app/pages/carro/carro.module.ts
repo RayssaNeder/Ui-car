@@ -26,8 +26,10 @@ import { MatIconModule } from '@angular/material/icon';
             NgxPaginationModule,
             FormsModule,
             NgSelectModule,
-            MatIconModule
+            MatIconModule,
+            
         ]
+
     }
 )
 

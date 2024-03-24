@@ -1,3 +1,5 @@
+import { NotificationService } from './../../services/notificacao.service';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Carro } from './../../models/Carro';
 import { CarroService } from './../../services/carro.service';
@@ -75,7 +77,7 @@ export class CarroComponent {
   }
 
 
-  constructor(public menuService: MenuService, public carroService: CarroService, public formBuilder: FormBuilder, public authService: AuthService) {
+  constructor(public menuService: MenuService, public carroService: CarroService, public formBuilder: FormBuilder, public authService: AuthService, private notificationService: NotificationService) {
   }
 
 
@@ -140,6 +142,8 @@ export class CarroComponent {
     .subscribe((response: Carro) => {
 
       this.carroForm.reset();
+      this.notificationService.success('Carro cadastrado com sucesso!');
+
 
 
 
