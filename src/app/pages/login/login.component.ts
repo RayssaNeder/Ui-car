@@ -49,7 +49,6 @@ export class LoginComponent {
         this.router.navigate(['/dashboard']);
       },
       err => {
-        alert('Ocorreu um erro');
       }
 
     )

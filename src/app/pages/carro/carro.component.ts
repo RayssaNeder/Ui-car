@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from './../../services/notificacao.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,6 +18,8 @@ export class CarroComponent {
   tipoTela: number = 1;// 1 listagem, 2 cadastro, 3 edição
   tableListCarros: Array<Carro>;
   id: string;
+  mostrarSpinner: boolean = false;
+
 
   page: number = 1;
   config: any;
@@ -77,9 +80,8 @@ export class CarroComponent {
   }
 
 
-  constructor(public menuService: MenuService, public carroService: CarroService, public formBuilder: FormBuilder, public authService: AuthService, private notificationService: NotificationService) {
+  constructor(private spinner: NgxSpinnerService,public menuService: MenuService, public carroService: CarroService, public formBuilder: FormBuilder, public authService: AuthService, private notificationService: NotificationService) {
   }
-
 
   carroForm: FormGroup;
 
@@ -143,9 +145,6 @@ export class CarroComponent {
 
       this.carroForm.reset();
       this.notificationService.success('Carro cadastrado com sucesso!');
-
-
-
 
     }, (error) => console.error(error),
       () => { })

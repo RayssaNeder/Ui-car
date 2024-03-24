@@ -1,3 +1,5 @@
+import { ErrorDialogModule } from './../../components/error-dialog/error-dialogo.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -27,7 +29,9 @@ import { MatIconModule } from '@angular/material/icon';
             FormsModule,
             NgSelectModule,
             MatIconModule,
-            
+            NgxSpinnerModule,
+            ErrorDialogModule
+
         ]
 
     }

@@ -1,3 +1,5 @@
+<ngx-spinner bdOpacity="0.9" bdColor="#333" size="medium" type="ball-spin-clockwise" *ngIf="mostrarSpinner"></ngx-spinner>
+
 <navbar></navbar>
 <sidebar></sidebar>
 
@@ -8,7 +10,6 @@
         <div class="card-header">
             <div class="card-title"> Cadastro de Carro </div>
             <div (click)="ListaCarro()" class="card-menu"> Listagem de Carros </div>
-
         </div>
 
         <form class="form-page" [formGroup]="carroForm" (submit)="enviar()">
